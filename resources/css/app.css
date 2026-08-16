@@ -571,3 +571,92 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .form-checkbox input { width: auto; cursor: pointer; }
 
 .auth-card .btn { width: 100%; margin-top: 1.5rem; cursor: pointer; }
+
+/* =========================================================
+   CART DRAWER — quantity controls + remove (Phase 6)
+========================================================= */
+.cart-line { position: relative; }
+.cart-line-qty { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.5rem; }
+.cart-line-qty button { width: 22px; height: 22px; border: 1px solid var(--line-strong); border-radius: var(--r-sm); font-size: 0.85rem; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+.cart-line-qty button:hover { border-color: var(--forest-deep); }
+.cart-line-qty span { min-width: 1.2em; text-align: center; font-size: 0.85rem; }
+.cart-line-remove { position: absolute; top: 1rem; right: 0; font-size: 0.72rem; color: var(--terracotta-deep); text-decoration: underline; cursor: pointer; background: none; border: none; }
+.cart-drawer-foot .btn[disabled] { opacity: 0.5; pointer-events: none; }
+
+/* =========================================================
+   ACCOUNT LAYOUT (Phase 5 — was previously unstyled)
+========================================================= */
+.account-layout { display: grid; grid-template-columns: 240px 1fr; gap: 2.5rem; align-items: start; }
+@media (max-width: 820px) { .account-layout { grid-template-columns: 1fr; } }
+.account-sidebar { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-md); overflow: hidden; position: sticky; top: 1.5rem; }
+.account-sidebar-head { padding: 1.4rem 1.3rem; border-bottom: 1px solid var(--line); background: var(--ivory-dim); }
+.account-sidebar-head strong { display: block; font-family: var(--font-display); font-size: 1.02rem; color: var(--forest-deep); }
+.account-sidebar-head span { display: block; font-size: 0.78rem; opacity: 0.65; margin-top: 0.2rem; }
+.account-nav { display: flex; flex-direction: column; padding: 0.6rem; }
+.account-nav a { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: 0.65rem 0.8rem; font-size: 0.88rem; border-radius: var(--r-sm); color: var(--forest); cursor: pointer; }
+.account-nav a:hover { background: var(--ivory-dim); }
+.account-nav a.active { background: var(--forest-deep); color: var(--ivory); }
+.account-nav form { margin: 0; }
+.account-nav form button { width: 100%; text-align: left; padding: 0; font-size: inherit; color: var(--terracotta-deep); cursor: pointer; }
+.badge-count { font-family: var(--font-mono); font-size: 0.7rem; background: var(--terracotta); color: var(--paper); padding: 0.1rem 0.45rem; border-radius: 999px; }
+.account-main { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-md); padding: 2rem clamp(1.2rem,3vw,2.5rem); min-height: 340px; }
+.account-main h1, .account-main h2 { font-size: var(--step-2); margin-bottom: 1.2rem; }
+
+/* Order list / detail */
+.order-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+.order-row:last-child { border-bottom: none; }
+.order-row-main strong { font-family: var(--font-display); }
+.order-row-main div { font-size: 0.8rem; opacity: 0.65; margin-top: 0.2rem; }
+.status-pill { font-size: 0.72rem; padding: 0.28rem 0.7rem; border-radius: 999px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+.status-pending_payment, .status-pending { background: rgba(177,88,58,0.14); color: var(--terracotta-deep); }
+.status-processing, .status-paid { background: rgba(58,85,68,0.14); color: var(--forest); }
+.status-shipped { background: rgba(60,90,150,0.14); color: #2f4d80; }
+.status-delivered { background: rgba(58,85,68,0.2); color: var(--forest-deep); }
+.status-cancelled, .status-failed { background: rgba(150,50,50,0.12); color: #8a2f2f; }
+.order-items-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+.order-items-table th, .order-items-table td { text-align: left; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--line); font-size: 0.85rem; }
+.order-items-table th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.6; }
+.empty-state { text-align: center; padding: 3rem 1rem; opacity: 0.65; font-size: 0.9rem; }
+
+/* Address cards */
+.address-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; margin-top: 1rem; }
+.address-card { border: 1px solid var(--line); border-radius: var(--r-md); padding: 1.1rem; position: relative; }
+.address-card.is-default { border-color: var(--terracotta); }
+.address-card .default-tag { position: absolute; top: 0.8rem; right: 0.8rem; font-size: 0.68rem; color: var(--terracotta-deep); font-weight: 700; text-transform: uppercase; }
+.address-card-actions { margin-top: 0.8rem; display: flex; gap: 0.9rem; font-size: 0.78rem; }
+.address-card-actions button { color: var(--forest); text-decoration: underline; cursor: pointer; }
+
+/* =========================================================
+   CHECKOUT (Phase 7)
+========================================================= */
+.checkout-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.5rem; align-items: start; }
+@media (max-width: 900px) { .checkout-layout { grid-template-columns: 1fr; } }
+.checkout-panel { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-md); padding: clamp(1.3rem,3vw,2.2rem); }
+.checkout-panel + .checkout-panel { margin-top: 1.5rem; }
+.checkout-panel h2 { font-size: var(--step-1); margin-bottom: 1.2rem; }
+.checkout-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.2rem; }
+.checkout-form-grid .form-field.full { grid-column: 1 / -1; }
+@media (max-width: 560px) { .checkout-form-grid { grid-template-columns: 1fr; } }
+.saved-address-option { display: flex; align-items: flex-start; gap: 0.7rem; border: 1px solid var(--line); border-radius: var(--r-sm); padding: 0.8rem 1rem; margin-bottom: 0.7rem; cursor: pointer; font-size: 0.85rem; }
+.saved-address-option input { margin-top: 0.2rem; cursor: pointer; }
+.saved-address-option.selected { border-color: var(--terracotta); background: rgba(177,88,58,0.05); }
+.checkout-summary-line { display: flex; justify-content: space-between; padding: 0.5rem 0; font-size: 0.88rem; border-bottom: 1px solid var(--line); }
+.checkout-summary-line:last-of-type { border-bottom: none; }
+.checkout-summary-total { display: flex; justify-content: space-between; font-family: var(--font-display); font-size: 1.2rem; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line-strong); }
+.checkout-item-mini { display: flex; gap: 0.7rem; padding: 0.6rem 0; border-bottom: 1px solid var(--line); font-size: 0.82rem; }
+.checkout-item-mini img { width: 44px; height: 54px; object-fit: cover; border-radius: var(--r-sm); }
+.checkout-item-mini .qty { opacity: 0.6; }
+.checkout-error { color: var(--terracotta-deep); font-size: 0.85rem; margin-top: 0.8rem; display: none; }
+.checkout-error.show { display: block; }
+.checkout-pay-btn { width: 100%; margin-top: 1.5rem; cursor: pointer; }
+.checkout-pay-btn[disabled] { opacity: 0.6; pointer-events: none; }
+.success-panel { text-align: center; padding: 3rem 1.5rem; }
+.success-panel svg { width: 56px; height: 56px; color: var(--forest); margin-bottom: 1rem; }
+
+/* =========================================================
+   Admin-specific styles now live in resources/css/admin.css
+   (loaded only on /admin routes via layouts/admin.blade.php)
+========================================================= */
+select.form-input, .form-field select { width: 100%; padding: 0.75rem 0.9rem; border: 1px solid var(--line-strong); border-radius: var(--r-sm); font-family: inherit; font-size: 0.92rem; cursor: pointer; background: var(--paper); color: var(--ink); }
+.form-field textarea { width: 100%; padding: 0.75rem 0.9rem; border: 1px solid var(--line-strong); border-radius: var(--r-sm); font-family: inherit; font-size: 0.92rem; cursor: auto; background: var(--paper); color: var(--ink); resize: vertical; min-height: 90px; }
+.account-nav a.disabled-link { opacity: 0.4; cursor: not-allowed; pointer-events: none; }

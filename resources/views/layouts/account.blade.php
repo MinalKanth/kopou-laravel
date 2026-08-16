@@ -12,6 +12,9 @@
             </div>
             <nav class="account-nav">
                 <a href="{{ route('account.dashboard') }}" class="{{ request()->routeIs('account.dashboard') ? 'active' : '' }}">Dashboard</a>
+                @if (auth()->user()->isAdmin())
+                    <a href="{{ route('admin.dashboard') }}" style="color: var(--terracotta-deep); font-weight: 600;">⚙ Admin Panel</a>
+                @endif
                 <a href="{{ route('account.orders.index') }}" class="{{ request()->routeIs('account.orders.*') ? 'active' : '' }}">My Orders</a>
                 <a href="{{ route('wishlist.index') }}">Wishlist <span class="badge-count">{{ count(session('wishlist_slugs', [])) }}</span></a>
                 <a href="{{ route('account.addresses.index') }}" class="{{ request()->routeIs('account.addresses.*') ? 'active' : '' }}">Saved Addresses</a>
@@ -20,12 +23,10 @@
                 <a href="#" class="disabled-link" title="Coming soon">Notifications</a>
                 <a href="#" class="disabled-link" title="Coming soon">Coupons</a>
                 <a href="#" class="disabled-link" title="Coming soon">Reviews</a>
-                <a href="#">
-                    <form action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button type="submit">Logout</button>
-                    </form>
-                </a>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit">Logout</button>
+                </form>
             </nav>
         </aside>
 

@@ -76,8 +76,8 @@
         </div>
 
         <div style="margin-top:1.5rem; display:flex; gap:0.8rem;">
-            <button type="submit" class="btn btn-dark">{{ $product->exists ? 'Save Changes' : 'Create Product' }}</button>
-            <a href="{{ route('admin.products.index') }}" class="btn btn-outline">Cancel</a>
+            <button type="submit" class="admin-btn admin-btn-dark">{{ $product->exists ? 'Save Changes' : 'Create Product' }}</button>
+            <a href="{{ route('admin.products.index') }}" class="admin-btn admin-btn-outline">Cancel</a>
         </div>
     </form>
 </div>

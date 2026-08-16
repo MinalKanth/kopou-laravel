@@ -11,22 +11,27 @@
     </select>
 </form>
 
-<div class="admin-table-wrap" style="margin-top:1rem;">
+<div class="admin-table-wrap">
     <table class="admin-table">
         <thead><tr><th>Order</th><th>Customer</th><th>Payment</th><th>Status</th><th>Total</th><th>Date</th><th></th></tr></thead>
         <tbody>
             @forelse ($orders as $order)
                 <tr>
-                    <td>{{ $order->order_number }}</td>
+                    <td class="admin-cell-primary">{{ $order->order_number }}</td>
                     <td>{{ $order->user->name ?? '—' }}</td>
                     <td><span class="status-pill status-{{ $order->payment_status }}">{{ ucfirst($order->payment_status) }}</span></td>
                     <td><span class="status-pill status-{{ $order->status }}">{{ $order->status_label }}</span></td>
-                    <td>&#8377;{{ number_format($order->total, 0) }}</td>
+                    <td class="admin-cell-primary">&#8377;{{ number_format($order->total, 0) }}</td>
                     <td>{{ $order->created_at->format('d M Y') }}</td>
                     <td class="admin-table-actions"><a href="{{ route('admin.orders.show', $order) }}">Manage</a></td>
                 </tr>
             @empty
-                <tr><td colspan="7" class="empty-state">No orders found.</td></tr>
+                <tr><td colspan="7">
+                    <div class="admin-empty">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/></svg>
+                        <p>No orders found.</p>
+                    </div>
+                </td></tr>
             @endforelse
         </tbody>
     </table>
