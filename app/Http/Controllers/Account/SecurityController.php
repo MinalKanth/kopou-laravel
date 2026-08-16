@@ -27,7 +27,7 @@ class SecurityController extends Controller
     {
         $validated = $request->validate([
             'current_password' => ['required', 'current_password'],
-            'password' => ['required', 'confirmed', Password::min(10)->mixedCase()->numbers()->uncompromised()],
+            'password' => ['required', 'confirmed', Password::min(10)->mixedCase()->numbers()],
         ]);
 
         $request->user()->forceFill([

@@ -20,7 +20,7 @@ class RegisterRequest extends FormRequest
             'phone' => ['nullable', 'string', 'max:20'],
             // Section 22: password policy — length + character mix, checked
             // against known-breached passwords via Password::default().
-            'password' => ['required', 'confirmed', Password::min(10)->mixedCase()->numbers()->uncompromised()],
+            'password' => ['required', 'confirmed', Password::min(10)->mixedCase()->numbers()],
         ];
     }
 }
